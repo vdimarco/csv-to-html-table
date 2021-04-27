@@ -55,13 +55,29 @@
           return "";
       }
 
+       function format_percent(x){
+        if (x)
+          return parseFloat(x).toFixed(2)+"%"
+        else
+          return "";
+      }
+
+             function format_trailing_digit(x,digits){
+        if (x)
+          return parseFloat(x).toFixed(digits)
+        else
+          return "";
+      }
+
+
+
       CsvToHtmlTable.init({
         csv_path: 'data/leaderboard.csv',
         element: 'table-container', 
         allow_download: false,
         csv_options: {separator: ',', delimiter: '"'},
         datatables_options: {"paging": false},
-        // custom_formatting: [[1, format_link]]
+        custom_formatting: [[3, format_trailing_digit], [4, format_percent]]
       });
     </script>
   </body>
